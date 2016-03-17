@@ -43,6 +43,7 @@ public class Body {
     public void draw() {
         StdDraw.setPenRadius(0.025);
         StdDraw.setPenColor(Color.BLUE);
+        int cat = 6;
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 
