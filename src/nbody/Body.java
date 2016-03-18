@@ -39,8 +39,8 @@ public class Body {
     } // forceFrom( Body )
 
     public void draw() {
-        StdDraw.setPenRadius(0.025);
-        StdDraw.setPenColor(Color.BLUE);
+        StdDraw.setPenRadius(mass/6.0e29);
+        StdDraw.setPenColor(Color.RED);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 
