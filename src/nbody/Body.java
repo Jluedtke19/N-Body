@@ -5,11 +5,9 @@ import java.awt.Color;
 
 /**
  * ****************************************************************************
- * Compilation: javac Body.java Execution: java Body Dependencies: Vector.java
- * StdDraw.java
- *
- * Implementation of a 2D Body with a position, velocity and mass.
- *
+ * This class determines the position, velocity, mass, and other aspects of the
+ * planets in the simulation.
+ * 
  *
  *****************************************************************************
  */
@@ -43,7 +41,6 @@ public class Body {
     public void draw() {
         StdDraw.setPenRadius(0.025);
         StdDraw.setPenColor(Color.BLUE);
-        int cat = 6;
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 

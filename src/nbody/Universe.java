@@ -5,17 +5,10 @@ import edu.princeton.cs.StdDraw;
 
 /**
  * ****************************************************************************
- * Compilation: javac Universe.java Execution: java Universe dt input.txt
- * Dependencies: Body.java Vector.java StdIn.java StdDraw.java Datafiles:
- * http://www.cs.princeton.edu/introcs/34nbody/2body.txt
- * http://www.cs.princeton.edu/introcs/34nbody/3body.txt
- * http://www.cs.princeton.edu/introcs/34nbody/4body.txt
- * http://www.cs.princeton.edu/introcs/34nbody/2bodyTiny.txt
- *
- * This data-driven program simulates motion in the universe defined by the
- * standard input stream, increasing time at the rate on the command line.
- *
- * % java Universe 25000 4body.txt
+ * In this class the radius of the universe is set, the number of planets is 
+ * defined, the forces of the planets is made, and then the universe is 
+ * simulated.
+ * 
  *
  *
  *****************************************************************************
