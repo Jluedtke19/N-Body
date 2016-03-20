@@ -48,7 +48,7 @@ public class Vector {
     public int length() {
         return N;
     } // length()
-
+    
     // return the inner product of this Vector a and b
     public double dot(Vector that) {
         if (this.N != that.N) {
@@ -65,8 +65,15 @@ public class Vector {
     public double magnitude() {
         return Math.sqrt(this.dot(this));
     } // magnitude()
-
-    // return the Euclidean distance between this and that
+    
+    public void xswitch(){
+        data[0] = data[0] * -1;
+    }
+    
+    public void yswitch(){
+        data[1] = data[1] * -1;
+    }
+// return the Euclidean distance between this and that
     public double distanceTo(Vector that) {
         if (this.N != that.N) {
             throw new RuntimeException("Dimensions don't agree");
@@ -74,7 +81,13 @@ public class Vector {
         
         return this.minus(that).magnitude();
     } // distanceTo( Vector )
-
+    
+    public double getx(){
+        return data[0];
+    }
+    public double gety(){
+        return data[1];
+    }
     // return this + that
     public Vector plus(Vector that) {
         if (this.N != that.N) {
