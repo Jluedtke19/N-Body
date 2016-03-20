@@ -7,7 +7,7 @@ import java.awt.Color;
  * ****************************************************************************
  * This class determines the position, velocity, mass, and other aspects of the
  * planets in the simulation.
- * 
+ *
  *
  *****************************************************************************
  */
@@ -22,6 +22,23 @@ public class Body {
         this.v = v;
         this.mass = mass;
     } // Body( Vector, Vector, double )
+
+    public void bounce(double scale) {
+        double xpos = r.cartesian(0);
+        double ypos = r.cartesian(1);
+        if (xpos >= scale ) {
+            v.xswitch();
+        }
+        if (ypos >=  scale ) {
+            v.yswitch();
+        }
+        if (xpos <= -scale ) {
+            v.xswitch();
+        }
+        if (ypos <= - scale ) {
+            v.yswitch();
+        }
+    }
 
     public void move(Vector f, double dt) {
         Vector a = f.times(1 / mass);
@@ -39,7 +56,7 @@ public class Body {
     } // forceFrom( Body )
 
     public void draw() {
-        StdDraw.setPenRadius(mass/6.0e29);
+        StdDraw.setPenRadius(mass / 6.0e29);
         StdDraw.setPenColor(Color.RED);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
