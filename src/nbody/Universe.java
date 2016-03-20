@@ -71,9 +71,10 @@ public class Universe {
         // move the bodies
         for (int i = 0; i < N; i++) {
             orbs[i].move(f[i], dt);
+            orbs[i].bounce(radius);
         } // for
     } // increaseTime( double )
-
+    
     // draw the N bodies
     public void draw() {
         for (int i = 0; i < N; i++) {
