@@ -87,7 +87,7 @@ public class Universe {
         Universe newton = new Universe( args[1] );
         double dt = Double.parseDouble(args[0]);
         while (true) {
-            StdDraw.clear();
+            StdDraw.clear(StdDraw.BLACK);
             newton.increaseTime(dt);
             newton.draw();
             StdDraw.show(10);
