@@ -2,6 +2,8 @@ package nbody;
 
 import edu.princeton.cs.StdDraw;
 import java.awt.Color;
+import java.io.*;
+import javax.sound.sampled.*;
 
 /**
  * ****************************************************************************
@@ -23,19 +25,38 @@ public class Body {
         this.mass = mass;
     } // Body( Vector, Vector, double )
 
+    public void play(File file) {
+        try {
+            File;
+            AudioInputStream stream;
+            AudioFormat format;
+            DataLine.Info info;
+            Clip clip;
+
+            stream = AudioSystem.getAudioInputStream();
+            format = stream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(stream);
+            clip.start();
+        } catch (Exception e) {
+            //whatevers
+        }
+    }
+
     public void bounce(double scale) {
         double xpos = r.cartesian(0);
         double ypos = r.cartesian(1);
-        if (xpos >= scale ) {
+        if (xpos >= scale) {
             v.xswitch();
         }
-        if (ypos >=  scale ) {
+        if (ypos >= scale) {
             v.yswitch();
         }
-        if (xpos <= -scale ) {
+        if (xpos <= -scale) {
             v.xswitch();
         }
-        if (ypos <= - scale ) {
+        if (ypos <= -scale) {
             v.yswitch();
         }
     }
