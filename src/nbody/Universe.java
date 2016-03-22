@@ -4,6 +4,7 @@ import edu.princeton.cs.In;
 import edu.princeton.cs.StdDraw;
 import java.awt.Color;
 import java.io.File;
+import java.util.ArrayList;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -24,7 +25,7 @@ public class Universe {
     private final double radius;     // radius of universe
     private final int N;             // number of bodies
     private final Body[] orbs;       // array of N bodies
-
+    
     // read universe from file
     public Universe(String fileName) {
 
@@ -59,7 +60,18 @@ public class Universe {
             orbs[i] = new Body(r, v, mass, c);
         } // for
     } // Universe()
-
+    
+//    public static void playCont(String url) {
+//    try {
+//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+//        Clip clip = AudioSystem.getClip();
+//        clip.open(audioInputStream);
+//        clip.loop();
+//    } catch(Exception ex) {
+//        System.out.println("Error with playing sound.");
+//        ex.printStackTrace();
+//    }
+//}
   public static void playSound(String url) {
     try {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());

@@ -67,11 +67,11 @@ public class Vector {
     } // magnitude()
     
     public void xswitch(){
-        data[0] = data[0] * -1;
+        data[0] = data[0] * -1 * .95;
     }
     
     public void yswitch(){
-        data[1] = data[1] * -1;
+        data[1] = data[1] * -1 * .95;
     }
 // return the Euclidean distance between this and that
     public double distanceTo(Vector that) {
