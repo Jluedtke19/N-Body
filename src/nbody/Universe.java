@@ -2,13 +2,19 @@ package nbody;
 
 import edu.princeton.cs.In;
 import edu.princeton.cs.StdDraw;
+import java.awt.Color;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import sun.applet.Main;
 
 /**
  * ****************************************************************************
- * In this class the radius of the universe is set, the number of planets is 
- * defined, the forces of the planets is made, and then the universe is 
+ * In this class the radius of the universe is set, the number of planets is
+ * defined, the forces of the planets is made, and then the universe is
  * simulated.
- * 
+ *
  *
  *
  *****************************************************************************
@@ -42,14 +48,29 @@ public class Universe {
             double vx = inputStream.readDouble();
             double vy = inputStream.readDouble();
             double mass = inputStream.readDouble();
+            int red = inputStream.readInt();
+            int green = inputStream.readInt();
+            int blue = inputStream.readInt();
+            int c[] = {red, green, blue};
             double[] position = {rx, ry};
             double[] velocity = {vx, vy};
             Vector r = new Vector(position);
             Vector v = new Vector(velocity);
-            orbs[i] = new Body(r, v, mass);
+            orbs[i] = new Body(r, v, mass, c);
         } // for
     } // Universe()
 
+  public static void playSound(String url) {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+}
     // increment time by dt units, assume forces are constant in given interval
     public void increaseTime(double dt) {
 
@@ -74,7 +95,7 @@ public class Universe {
             orbs[i].bounce(radius);
         } // for
     } // increaseTime( double )
-    
+
     // draw the N bodies
     public void draw() {
         for (int i = 0; i < N; i++) {
@@ -84,7 +105,7 @@ public class Universe {
 
     // client to simulate a universe
     public static void main(String[] args) {
-        Universe newton = new Universe( args[1] );
+        Universe newton = new Universe(args[1]);
         double dt = Double.parseDouble(args[0]);
         while (true) {
             StdDraw.clear(StdDraw.BLACK);
