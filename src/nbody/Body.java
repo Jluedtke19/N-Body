@@ -2,6 +2,8 @@ package nbody;
 
 import edu.princeton.cs.StdDraw;
 import java.awt.Color;
+import java.io.*;
+import javax.sound.sampled.*;
 
 /**
  * ****************************************************************************
@@ -16,27 +18,34 @@ public class Body {
     private Vector r;      // position
     private Vector v;      // velocity
     private final double mass;   // mass
+    private Color color;
 
-    public Body(Vector r, Vector v, double mass) {
+    public Body(Vector r, Vector v, double mass, int[] c) {
         this.r = r;
         this.v = v;
         this.mass = mass;
+        this.color = new Color(c[0], c[1], c[2]);
     } // Body( Vector, Vector, double )
+
 
     public void bounce(double scale) {
         double xpos = r.cartesian(0);
         double ypos = r.cartesian(1);
-        if (xpos >= scale ) {
+        if (xpos >= scale) {
             v.xswitch();
+            Universe.playSound("clack.wav");
         }
-        if (ypos >=  scale ) {
+        if (ypos >= scale) {
             v.yswitch();
+            Universe.playSound("clack.wav");
         }
-        if (xpos <= -scale ) {
+        if (xpos <= -scale) {
             v.xswitch();
+            Universe.playSound("clack.wav");
         }
-        if (ypos <= - scale ) {
+        if (ypos <= -scale) {
             v.yswitch();
+            Universe.playSound("clack.wav");
         }
     }
 
@@ -57,7 +66,7 @@ public class Body {
 
     public void draw() {
         StdDraw.setPenRadius(mass / 6.0e29);
-        StdDraw.setPenColor(Color.RED);
+        StdDraw.setPenColor(this.color);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw()
 
