@@ -40,15 +40,15 @@ public class Body {
         }
         if (ypos >= scale) {
             v.yswitch();
-            Universe.playSound("clack.wav");
+            Universe.playSound("pew.wav");
         }
         if (xpos <= -scale) {
             v.xswitch();
-            Universe.playSound("clack.wav");
+            Universe.playSound("techkich.wav");
         }
         if (ypos <= -scale) {
             v.yswitch();
-            Universe.playSound("clack.wav");
+            Universe.playSound("shake.wav");
         }
     }
 
