@@ -61,17 +61,17 @@ public class Universe {
         } // for
     } // Universe()
     
-//    public static void playCont(String url) {
-//    try {
-//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
-//        Clip clip = AudioSystem.getClip();
-//        clip.open(audioInputStream);
-//        clip.loop();
-//    } catch(Exception ex) {
-//        System.out.println("Error with playing sound.");
-//        ex.printStackTrace();
-//    }
-//}
+    public static void playCont(String url) {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+}
   public static void playSound(String url) {
     try {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
@@ -117,6 +117,7 @@ public class Universe {
 
     // client to simulate a universe
     public static void main(String[] args) {
+        Universe.playCont("techkich.wav");
         Universe newton = new Universe(args[1]);
         double dt = Double.parseDouble(args[0]);
         while (true) {
