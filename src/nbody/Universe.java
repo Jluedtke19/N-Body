@@ -11,14 +11,9 @@ import javax.sound.sampled.Clip;
 import sun.applet.Main;
 
 /**
- * ****************************************************************************
  * In this class the radius of the universe is set, the number of planets is
  * defined, the forces of the planets is made, and then the universe is
  * simulated.
- *
- *
- *
- *****************************************************************************
  */
 public class Universe {
 
@@ -26,6 +21,11 @@ public class Universe {
     private final int N;             // number of bodies
     private final Body[] orbs;       // array of N bodies
     
+/**
+ * Reads in a file to create the universe. Sets scale for the universe and reads
+ * in the bodies
+ * @param fileName 
+ */
     // read universe from file
     public Universe(String fileName) {
 
@@ -60,7 +60,10 @@ public class Universe {
             orbs[i] = new Body(r, v, mass, c);
         } // for
     } // Universe()
-    
+/**
+ * Loops a beat or song
+ * @param url A Wav file stored in resources
+ */
     public static void playCont(String url) {
     try {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
@@ -72,6 +75,10 @@ public class Universe {
         ex.printStackTrace();
     }
 }
+/**
+ * Plays a sound once.
+ * @param url Wav file
+ */
   public static void playSound(String url) {
     try {
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
@@ -83,6 +90,11 @@ public class Universe {
         ex.printStackTrace();
     }
 }
+  /**
+   * Reads in the time the universe is played at, computes the forces,and moves
+   * the bodies.
+   * @param dt The speed of the universe.
+   */
     // increment time by dt units, assume forces are constant in given interval
     public void increaseTime(double dt) {
 
@@ -107,14 +119,19 @@ public class Universe {
             orbs[i].bounce(radius);
         } // for
     } // increaseTime( double )
-
+/**
+ * Draws the planets for amount N.
+ */
     // draw the N bodies
     public void draw() {
         for (int i = 0; i < N; i++) {
             orbs[i].draw();
         } // for
     } // draw()
-
+/**
+ * Executes functions needed to simulate the Universe
+ * @param args The text files
+ */
     // client to simulate a universe
     public static void main(String[] args) {
         Universe.playCont("techkich.wav");
