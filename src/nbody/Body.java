@@ -63,9 +63,9 @@ public class Body {
         }
     }
 /**
- * 
- * @param f
- * @param dt 
+ * Moves the planet by computing its velocity, mass, and radius.
+ * @param f The vector f
+ * @param dt the speed of the universe
  */
     public void move(Vector f, double dt) {
         Vector a = f.times(1 / mass);
@@ -134,5 +134,9 @@ public class Body {
         StdDraw.setPenRadius(penRadius);
         StdDraw.point(r.cartesian(0), r.cartesian(1));
     } // draw( double )
+    
+    public Vector getPosition(){
+        return r;
+    }
 
 } // Body
