@@ -128,6 +128,20 @@ public class Universe {
             orbs[i].draw();
         } // for
     } // draw()
+
+    public void drawStar(){
+        for (int i = 0; i < 50; i++){
+            double x = Math.random() * this.radius ;
+            double y = Math.random() * this.radius ;
+            double r = .001 + Math.random() * .004;
+            StdDraw.setPenRadius(r);
+            StdDraw.setPenColor(Color.WHITE);
+            StdDraw.point(x, y);
+            StdDraw.point(-x, -y);
+            StdDraw.point(-x, y);
+            StdDraw.point(x, -y);  
+        }
+    }
 /**
  * Executes functions needed to simulate the Universe
  * @param args The text files
@@ -141,6 +155,7 @@ public class Universe {
             StdDraw.clear(StdDraw.BLACK);
             newton.increaseTime(dt);
             newton.draw();
+            newton.drawStar();
             StdDraw.show(10);
         } // while
     } // main( String [] )
